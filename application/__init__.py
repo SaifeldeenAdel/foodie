@@ -6,7 +6,7 @@ from urllib.parse import quote_plus
 
 app = Flask(__name__)
 app.jinja_env.filters['quote_plus'] = lambda u: quote_plus(u)
-app.config['SECRET_KEY'] = '1b6e6ff21daa8629c7b3ee11383a3d1b'
+app.config['SECRET_KEY'] = 'MY SECRET KEY'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
