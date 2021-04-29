@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div style="display:flex; justify-content:center; align-items:center;">
+        <div >
+            <br><br><br><br><br><br>
+            <p class='welcome'>Welcome To</p>
+            <h1 class="brand">FOODIE</h1>
+            <br>
+            <p style="text-align: center; font-size: 13pt;">The best place to search for and save your favourite recipes. <br> Recipes come from Bon Appetit, Serious Eats, Epicurious, and many more! <br><br> <strong style="font-size: 16pt;">Get Started!</strong></p>
+            
+            <div class="center">
+                <a class="btn btn-dark welcome_button" href="{{ url_for('search') }}" role="button" style="margin-right: 15px; margin-left: 0px;font-size: 14pt;">Search for Recipes</a>
+                <a class="btn btn-dark welcome_button" href="{{ url_for('my_recipes') }}" role="button" style=" font-size: 14pt;">My Recipes</a>
+                
+            </div>
+        </div>
+
+    </div>
+    
+
+{% endblock %}

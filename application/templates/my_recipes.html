@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search for Recipes
+{% endblock %}
+
+{% block main %}
+    <div class="container p-5">
+        <h1 class="">My Recipes!</h1>
+        <p class="border-bottom mb-4" style="text-align: center;">The collection of recipes that you love. </p>
+        
+        {% if user_recipes|length > 0 %}
+        <table class="table ">
+            <thead>
+                <tr style="font-weight: bold;" >
+                    <td class="border" style="width: 75%; font-size: 18pt;">Recipe</td>
+                    <td style="text-align: center; font-size: 14pt;">Expand the recipe</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                {% for recipe in recipes %}
+                <tr>
+                    <td class="border recipe_name">
+                        <img src="{{recipe.image}}" alt="" width="100px">
+                        <a href="{{recipe.url}}}" target="_blank" class="border-bottom mb-4">{{recipe.name}}</a> 
+                        <p style="text-align: left; font-size: 10pt;" class="ingredients"><strong>Ingredients: </strong>{{recipe.ingredients}}</p> 
+                    </td>
+                    <td style="text-align: center;" class="border"> 
+                        <br>
+                            <form action="/recipe_page" method="GET">
+                                <input type="text" style="display: none;" name="id" value="{{recipe['uri']}}"> 
+                                <button type="" class="btn btn-dark" >Expand</button>
+                            </form>
+                             
+                    </td>
+                </tr>
+                {% endfor %}
+                </tr>
+
+
+            </tbody>
+        </table>
+
+        {% else %}
+            <br><br><br><br><br><br>
+            <div class="container" style="text-align: center; font-size: 15pt; ">You haven't saved any recipes yet.<br> <strong>Let's fix that!</strong></div><br>
+            <div class="center"><a class="btn btn-dark welcome_button" href="{{ url_for('search') }}" role="button" style="font-size: 15pt;">Search for Recipes</a></div>
+
+
+        {% endif %}
+    </div>
+{% endblock %}

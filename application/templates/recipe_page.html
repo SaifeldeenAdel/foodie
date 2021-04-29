@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recipe
+{% endblock %}
+
+{% block main %}
+    <div class="container p-5">
+        <h1>{{recipe['name']}}</h1>
+        <p class="border-bottom" style="text-align: center; color: #666;"><strong style="font-size: 12pt;">Yield: </strong> 
+            {{recipe['yield']}}
+            <br>
+            <strong style="font-size: 12pt;">Calories: </strong> 
+            {{recipe['calories']|round(0)}}
+            <br><br>
+        </p>
+        <br>
+            <div class="container" style="overflow: auto; ">
+                <img src="{{recipe['image']}}" alt="" style="margin-right: 40px; margin-left: 150px; width:25%; filter: drop-shadow(8px 8px 5px #777);"/>
+                
+                <p class="">
+                    
+                    <strong style="font-size: 17pt;">Ingredients: </strong> 
+
+                    <ul style="overflow: hidden;">
+                        {% for ingredient in recipe['ingredients'] %}
+                        <li style="font-size: 13pt;">{{ingredient}}</li>
+                        {% endfor %}
+                    </ul>  
+                </p>
+                    
+            </div>
+            <br><br>
+            
+            {% if  recipe['uri'] in user_recipes %}    
+            <form action="/remove_recipe?id={{ recipe['uri']|quote_plus }}" method="POST">
+                <div class="container "><p class="center"> <a href="{{recipe['url']}}" target="_blank">Check out the full recipe </a></p>
+                <div class="center"><button class="btn btn-dark" type="submit">Remove from my recipes</button></div> </div>  
+            </form>
+            
+            {% else %}
+
+            <form action="/add_recipe?id={{ recipe['uri']|quote_plus }}" method="POST">
+                <div class="container "><p class="center"> <a href="{{recipe['url']}}" target="_blank">Check out the full recipe </a></p>
+                <div class="center"><button class="btn btn-dark" type="submit">Add to my recipes</button></div> </div>  
+            </form>
+
+            {% endif %}
+
+            
+    </div>
+{% endblock %}
