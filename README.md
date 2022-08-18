@@ -15,7 +15,7 @@ It is built primarily using **python/flask, html, css and SQL**.
 
 # **Key Features**
 * **User login system**. Opens the opportunity for a "My recipes" page
-    * ### Users can also change passwords
+    * Users can also change passwords
 * **Search for Recipes** page where you can...search for recipes. (with the help of the EDAMAM Recipe search API, more on that later)
 * **My Recipes** page where each user can access the recipes they saved. 
 * **Expanded page** for each recipe where a little more info is given about the recipe and from there, a user can add it to their recipes and/or visit the actual website it's from.
